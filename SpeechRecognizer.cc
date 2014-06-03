@@ -14,8 +14,6 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
-#define MODELDIR "/home/fito/MexicanSpanish"
-
 
 using namespace v8;
 

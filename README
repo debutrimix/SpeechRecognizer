@@ -1,0 +1,26 @@
+This is my first node.js native module so you may found nasty things 
+for using the module just do inside the main source directory:
+
+node-gyp configure
+node-gyp build 
+
+for using the module inside node.js a code like this should be implemented:
+
+
+var v = require('./build/Release/SpeechRecognizer');
+var fs = require('fs');
+//this is just an example sound can be from any source 
+var t = fs.readFileSync('path to raw signen 16 bits little endian sound file');
+var a = [];
+for(var c=0; c < t.length ; c+=2)
+  a.push( t.readInt16LE(c))
+var str=v.process(a,
+                  'Sphinx\'s module parameters path directory',
+                  'Language model path',
+                  'Dictionary path',
+                  'optional jsgf  grammars file',
+                  'sample rate (yes must be supplied as an string instead of an integer'
+                 );
+console.log(str);
+                         ~                         
+
